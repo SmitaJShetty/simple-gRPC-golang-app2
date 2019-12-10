@@ -15,17 +15,15 @@ func main() {
 }
 
 func addClient() {
-	userCreds := UserCredential{
-		username: "Jane",
-		password: "Doe",
-	}
-
-	fmt.Println("1")
-	conn, connErr := grpc.Dial(":8888", grpc.WithInsecure(), grpc.WithPerRPCCredentials(&userCreds))
+	// userCreds := UserCredential{
+	// 	username: "Jane",
+	// 	password: "Doe",
+	// }
+	conn, connErr := grpc.Dial(":8888", grpc.WithInsecure())
 	if connErr != nil {
 		log.Fatal("failed to connect on port 8888", connErr)
 	}
-	fmt.Println("2", conn)
+
 	defer conn.Close()
 	if conn == nil {
 		log.Fatal("listener was empty")
